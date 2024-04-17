@@ -11,7 +11,7 @@
       <li class="<?php echo $nav_reviews_class; ?>"><a href="/reviews">Reviews</a></li>
       <li class="<?php echo $nav_plopbox_class; ?>"><a href="/plopbox">Plop Box</a></li>
 
-      <li class="float-right"><a href="">Sign Out</a></li>
+      <li class="float-right"><a href= <?php echo logout_url(); ?> >Sign Out</a></li>
     </ul>
   </nav>
 </header>
