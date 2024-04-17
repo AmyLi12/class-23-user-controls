@@ -12,6 +12,11 @@ $nav_home_class = "active_page";
   <?php include "includes/header.php" ?>
 
   <main>
+
+  <?php if (is_user_logged_in()) { ?>
+    <p>Welcome <strong><?php echo htmlspecialchars($current_user['username']); ?></strong>!</p>
+  <?php } ?>
+
     <h2>INFO/CS 2300; NBA 5301</h2>
 
     <p>This website is rendered server-side in PHP.</p>
@@ -20,8 +25,10 @@ $nav_home_class = "active_page";
     <!--       Malicious actors may use the version to try and hack your website. -->
     <p>You're running PHP version: <strong><?php echo phpversion(); ?></strong>.</p>
 
+    <?php if (!is_user_logged_in()) { ?>
     <h2>Sign In</h2>
     <?php echo login_form('/', $session_messages); ?>
+    <?php } ?>
 
   </main>
 

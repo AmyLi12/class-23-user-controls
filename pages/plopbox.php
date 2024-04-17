@@ -18,6 +18,8 @@ $page_title = "Clipart Plop Box";
 
 $nav_plopbox_class = "active_page";
 
+if (is_user_logged_in()) {
+
 // Set maximum file size for uploaded files.
 // MAX_FILE_SIZE must be set to bytes
 // 1 MB = 1000000 bytes
@@ -106,6 +108,7 @@ if (isset($_POST["upload"])) {
     }
   }
 }
+}
 
 // query the database for the clipart records
 $records = exec_sql_query(
@@ -160,6 +163,8 @@ $records = exec_sql_query(
     <section class="upload">
       <h2>Upload Clipart</h2>
 
+      <?php if (is_user_logged_in()) { ?>
+
       <form action="/plopbox" method="post" enctype="multipart/form-data">
 
         <!-- MAX_FILE_SIZE must precede the file input field -->
@@ -189,6 +194,12 @@ $records = exec_sql_query(
         </div>
 
       </form>
+
+      <?php } else {
+        echo login_form("/plopbox", $session_messages);
+      }
+      ?>
+
     </section>
 
   </main>
